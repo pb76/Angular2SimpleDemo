@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {NgForm} from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  textArray = [];
+  title = 'appen';
+  textArray = [{'firstText': 'Olle'}];
+
+  onSubmit(f: NgForm) {
+    console.log(f.value);  // { first: '', last: '' }
+    this.textArray.push(f.value);
+    console.log(this.textArray);
+    f.resetForm();
+  }
 }
